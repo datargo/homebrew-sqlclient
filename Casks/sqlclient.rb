@@ -11,6 +11,17 @@ cask "sqlclient" do
   desc "Native macOS client for MySQL, MariaDB, PostgreSQL, SQL Server and SQLite"
   homepage "https://sqlclient.eu/"
 
+  # Die App bringt einen eigenen Updater mit (signiert, gegen dasselbe latest.json).
+  # Ohne diese Zeile hielte Homebrew sich für zuständig und installierte bei jedem
+  # `brew upgrade` über eine App, die sich längst selbst aktualisiert hat — im besten
+  # Fall unnötig, im schlechteren gegen die Fassung, die gerade läuft.
+  #
+  # Mit der Zeile überspringt `brew upgrade` den Cask (Cask#outdated_version), es sei
+  # denn, jemand ruft ausdrücklich `--greedy`. Die Versionsangabe bleibt trotzdem
+  # gepflegt: `brew install` holt damit die richtige Fassung, und livecheck unten
+  # meldet weiterhin, was aktuell ist.
+  auto_updates true
+
   # Homebrew fragt selbst nach, ob es eine neuere Fassung gibt. latest.json ist dieselbe
   # Datei, aus der auch die App ihre Updates zieht — es gibt also nur eine Wahrheit.
   livecheck do
