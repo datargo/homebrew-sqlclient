@@ -21,7 +21,12 @@ cask "sqlclient" do
   end
 
   # Universal Binary, Apple-notarisiert. minimumSystemVersion steht in tauri.conf.json.
-  depends_on macos: ">= :big_sur"
+  #
+  # Ohne Vergleichszeichen: die Schreibweise ">= :big_sur" ist seit Homebrew 6 abgekündigt
+  # und wirft beim Tappen eine Warnung. Die Bedeutung bleibt dieselbe — für Casks setzt
+  # Homebrew von sich aus ">=" davor (Cask::DSL::DependsOn#macos=, comparator: ">="), es
+  # heisst also weiterhin „Big Sur oder neuer" und nicht „genau Big Sur".
+  depends_on macos: :big_sur
 
   app "sqlclient.app"
 
