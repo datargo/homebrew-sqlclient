@@ -9,13 +9,17 @@ MySQL, MariaDB, PostgreSQL, SQL Server and SQLite.
 brew install --cask datargo/sqlclient/sqlclient
 ```
 
-That single command adds the tap and installs the app. If you prefer the two
-steps separately:
+That single command adds the tap and installs the app.
+
+Homebrew 6 asks you to trust a third-party tap before it will load anything from
+it, so the first install prints a confirmation about trusting this cask. That is
+expected and it only has to be answered once. To decide it up front instead:
 
 ```sh
-brew tap datargo/sqlclient
-brew install --cask sqlclient
+brew trust datargo/sqlclient
 ```
+
+`brew untrust datargo/sqlclient` reverses it.
 
 ## Update
 
