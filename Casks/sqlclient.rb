@@ -53,9 +53,16 @@ cask "sqlclient" do
     "~/Library/WebKit/com.datargo.sqlclient",
   ]
 
+  # Der Hinweis nennt jetzt beide Hälften. Vorher stand hier nur „Lesen bleibt frei",
+  # und das verschwieg, dass SQLite überhaupt nicht lizenzpflichtig ist: die Engine
+  # läuft nicht durch die Prüfung (state::is_free_engine, connection.rs:498), dort
+  # bleibt auch das Schreiben dauerhaft frei.
   caveats <<~EOS
-    sqlclient läuft 30 Tage als Vollversion. Danach bleiben Lesen, Browsen und
-    Exportieren dauerhaft kostenlos; für das Schreiben wird eine Lizenz gebraucht.
+    sqlclient läuft 30 Tage als Vollversion.
+
+    Danach bleibt SQLite vollständig kostenlos, mit Schreiben. Bei MySQL, MariaDB,
+    PostgreSQL und SQL Server bleiben Lesen, Browsen und Exportieren dauerhaft frei;
+    fürs Schreiben wird dort eine Lizenz gebraucht.
 
     Der Schlüsselbund-Eintrag für Touch ID wird beim Entfernen nicht gelöscht,
     weil `brew uninstall` nicht in den Schlüsselbund greift. Wer ihn loswerden
