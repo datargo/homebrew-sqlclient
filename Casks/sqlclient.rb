@@ -1,9 +1,9 @@
 cask "sqlclient" do
   # version und sha256 werden bei jedem Release von scripts/release.sh ersetzt.
-  # Die beiden Zeilen deshalb bitte nicht von Hand umformatieren — das Skript erkennt sie
+  # Die beiden Zeilen deshalb bitte nicht von Hand umformatieren – das Skript erkennt sie
   # über ihren Anfang, nicht über eine Zeilennummer.
-  version "1.2.4"
-  sha256 "e7f0f72fe925c7d7d10502a10a319d504abac141e532f05258c6378f9d869fb6"
+  version "1.2.5"
+  sha256 "9a8adb9237368dee85690d616f1fd3815f3139b45be2a339a84c30f155a37871"
 
   url "https://dl.sqlclient.eu/sqlclient/sqlclient_#{version}_universal.dmg",
       verified: "dl.sqlclient.eu/sqlclient/"
@@ -13,7 +13,7 @@ cask "sqlclient" do
 
   # Die App bringt einen eigenen Updater mit (signiert, gegen dasselbe latest.json).
   # Ohne diese Zeile hielte Homebrew sich für zuständig und installierte bei jedem
-  # `brew upgrade` über eine App, die sich längst selbst aktualisiert hat — im besten
+  # `brew upgrade` über eine App, die sich längst selbst aktualisiert hat – im besten
   # Fall unnötig, im schlechteren gegen die Fassung, die gerade läuft.
   #
   # Mit der Zeile überspringt `brew upgrade` den Cask (Cask#outdated_version), es sei
@@ -23,7 +23,7 @@ cask "sqlclient" do
   auto_updates true
 
   # Homebrew fragt selbst nach, ob es eine neuere Fassung gibt. latest.json ist dieselbe
-  # Datei, aus der auch die App ihre Updates zieht — es gibt also nur eine Wahrheit.
+  # Datei, aus der auch die App ihre Updates zieht – es gibt also nur eine Wahrheit.
   livecheck do
     url "https://dl.sqlclient.eu/sqlclient/latest.json"
     strategy :json do |json|
@@ -34,7 +34,7 @@ cask "sqlclient" do
   # Universal Binary, Apple-notarisiert. minimumSystemVersion steht in tauri.conf.json.
   #
   # Ohne Vergleichszeichen: die Schreibweise ">= :big_sur" ist seit Homebrew 6 abgekündigt
-  # und wirft beim Tappen eine Warnung. Die Bedeutung bleibt dieselbe — für Casks setzt
+  # und wirft beim Tappen eine Warnung. Die Bedeutung bleibt dieselbe – für Casks setzt
   # Homebrew von sich aus ">=" davor (Cask::DSL::DependsOn#macos=, comparator: ">="), es
   # heisst also weiterhin „Big Sur oder neuer" und nicht „genau Big Sur".
   depends_on macos: :big_sur
