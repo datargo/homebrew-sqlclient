@@ -2,8 +2,8 @@ cask "sqlclient" do
   # version und sha256 werden bei jedem Release von scripts/release.sh ersetzt.
   # Die beiden Zeilen deshalb bitte nicht von Hand umformatieren – das Skript erkennt sie
   # über ihren Anfang, nicht über eine Zeilennummer.
-  version "1.2.9"
-  sha256 "90145c6a4105acd84db6b24abd9eb105d9cb5e19b8873de495d190122593db96"
+  version "1.2.11"
+  sha256 "de5b18e3a89d7134ec7aadd04bb14c52113a7fb789439175d4df122f90fcb498"
 
   url "https://dl.sqlclient.eu/sqlclient/sqlclient_#{version}_universal.dmg",
       verified: "dl.sqlclient.eu/sqlclient/"
